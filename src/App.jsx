@@ -1,79 +1,155 @@
-import {
-  AppBar,
-  Button,
-  Container,
-  CssBaseline,
-  Grid,
-  Toolbar,
-  Typography,
-  
-} from "@mui/material";
-import { PhotoCamera } from "@mui/icons-material";
-// import { makeStyles } from '@mui/styles';
+// import * as React from 'react';
+// import AppBar from '@mui/material/AppBar';
+// import Button from '@mui/material/Button';
+// import CameraIcon from '@mui/icons-material/PhotoCamera';
+// import Card from '@mui/material/Card';
+// import CardActions from '@mui/material/CardActions';
+// import CardContent from '@mui/material/CardContent';
+// import CardMedia from '@mui/material/CardMedia';
+// import CssBaseline from '@mui/material/CssBaseline';
+// import Grid from '@mui/material/Grid';
+// import Stack from '@mui/material/Stack';
+// import Box from '@mui/material/Box';
+// import Toolbar from '@mui/material/Toolbar';
+// import Typography from '@mui/material/Typography';
+// import Container from '@mui/material/Container';
+// import Link from '@mui/material/Link';
+import { AppBar, Box, Button, Card, CardActions, CardContent, CardMedia, Container, CssBaseline, Grid, Link, Stack, Toolbar, Typography } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import CameraIcon from '@mui/icons-material/PhotoCamera';
 
-//for better way using css styling
-// const useStyles = makeStyles((theme) =>({
-//   container:{
-//     color: theme.palette.yellow.main,
-//   }
 
-// }))
+const Copyright=()=> {
+  const currentDate = new Date();
 
-const App =()=> {
+  // Options for formatting the date
+  const options = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
 
-  // const classes = useStyles();
+  // Format the date using toLocaleDateString with 'bn-BD' locale
+  const formattedDate = currentDate.toLocaleDateString('en-BD', options);
   return (
-    <div>
-      <CssBaseline>
-        <AppBar position="relative">
-          <Toolbar>
-            <PhotoCamera></PhotoCamera>
-            <Typography variant="h5">Photo Gallery</Typography>
-          </Toolbar>
-        </AppBar>
-      </CssBaseline>
-      <main>
-        <div>
-          <Container maxWidth="sm">
-            <Typography
-              variant="h3"
-              align="center"
-              color="textPrimary"
-              gutterBottom
-              className={classes.container}
-            >
-              Photo Album
-            </Typography>
-            <Typography
-              variant="h5"
-              align="center"
-              color="textSecondary"
-              paragraph
-            >
-              An album is a cohesive collection of audio recordings, typically
-              by a single artist or group, presented as a unified body of work.
-              It serves as a curated journey through musical expression,
-              offering listeners a diverse range of emotions, themes, and sonic
-              landscapes.
-            </Typography>
-
-            <div>
-              <Grid container spacing={2} justifyContent="center">
-                <Grid item>
-                  <Button variant="contained">See the Collection</Button>
-                  
-                </Grid>
-                <Grid item>
-                <Button variant="outlined">Secondary action</Button>
-                  
-                </Grid>
-              </Grid>
-            </div>
-          </Container>
-        </div>
-      </main>
-    </div>
+    <Typography variant="body2" color="text.secondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://mui.com/">
+        Your Website
+      </Link>{' '}
+      {formattedDate}
+      
+      {'.'}
+    </Typography>
   );
 }
 
+const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+// TODO remove, this demo shouldn't need to reset the theme.
+const defaultTheme = createTheme();
+
+ const App =()=> {
+  return (
+    <ThemeProvider theme={defaultTheme}>
+      <CssBaseline />
+      <AppBar position="relative">
+        <Toolbar sx={{display:"flex", justifyContent: 'space-between'}} >
+         
+          <Typography variant="h6" color="inherit" sx={{display:"flex", alignItems: 'center',}} >
+          <CameraIcon sx={{ mr: 2 }} />
+            Photo Gallery
+          </Typography>
+          
+          <Typography variant="h6" color="inherit" noWrap>
+            More Collections
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <main>
+        {/* Hero unit */}
+        <Box
+          sx={{
+            bgcolor: 'background.paper',
+            pt: 8,
+            pb: 6,
+          }}
+        >
+          <Container maxWidth="sm">
+            <Typography
+              component="h1"
+              variant="h2"
+              align="center"
+              color="text.primary"
+              gutterBottom
+            >
+              Photo Album
+            </Typography>
+            <Typography variant="h5" align="center" color="text.secondary" paragraph>
+             Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae laborum distinctio et sunt! Assumenda quaerat necessitatibus, similique enim distinctio perferendis. Voluptatibus, beatae et.
+            </Typography>
+            <Stack
+              sx={{ pt: 4 }}
+              direction="row"
+              spacing={2}
+              justifyContent="center"
+            >
+              <Button variant="contained">See my photo</Button>
+              <Button variant="outlined">Secondary action</Button>
+            </Stack>
+          </Container>
+        </Box>
+        <Container sx={{ py: 8 }} maxWidth="md">
+        
+          <Grid container spacing={4}>
+            {cards.map((card) => (
+              <Grid item key={card} xs={12} sm={6} md={4}>
+                <Card
+                  sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+                >
+                  <CardMedia
+                    component="div"
+                    sx={{
+                      // 16:9
+                      pt: '56.25%',
+                    }}
+                    image="https://source.unsplash.com/random?wallpapers"
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      wallpapers
+                    </Typography>
+                    <Typography>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga ad impedit incidunt tenetur error voluptate.
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small">Explore</Button>
+                    <Button size="small">Edit</Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </main>
+      {/* Footer */}
+      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
+        <Typography variant="h6" align="center" gutterBottom>
+          Footer
+        </Typography>
+        <Typography
+          variant="subtitle1"
+          align="center"
+          color="text.secondary"
+          component="p"
+        >
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit natus quas hic. Sequi nobis mollitia alias quibusdam eaque! Nihil, aliquid.
+        </Typography>
+        <Copyright />
+      </Box>
+      {/* End footer */}
+    </ThemeProvider>
+  );
+}
 export default App;
