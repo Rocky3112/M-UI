@@ -1,19 +1,3 @@
-// import * as React from 'react';
-// import AppBar from '@mui/material/AppBar';
-// import Button from '@mui/material/Button';
-// import CameraIcon from '@mui/icons-material/PhotoCamera';
-// import Card from '@mui/material/Card';
-// import CardActions from '@mui/material/CardActions';
-// import CardContent from '@mui/material/CardContent';
-// import CardMedia from '@mui/material/CardMedia';
-// import CssBaseline from '@mui/material/CssBaseline';
-// import Grid from '@mui/material/Grid';
-// import Stack from '@mui/material/Stack';
-// import Box from '@mui/material/Box';
-// import Toolbar from '@mui/material/Toolbar';
-// import Typography from '@mui/material/Typography';
-// import Container from '@mui/material/Container';
-// import Link from '@mui/material/Link';
 import { AppBar, Box, Button, Card, CardActions, CardContent, CardMedia, Container, CssBaseline, Grid, Link, Stack, Toolbar, Typography } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CameraIcon from '@mui/icons-material/PhotoCamera';
@@ -22,14 +6,12 @@ import CameraIcon from '@mui/icons-material/PhotoCamera';
 const Copyright=()=> {
   const currentDate = new Date();
 
-  // Options for formatting the date
   const options = {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
   };
 
-  // Format the date using toLocaleDateString with 'bn-BD' locale
   const formattedDate = currentDate.toLocaleDateString('en-BD', options);
   return (
     <Typography variant="body2" color="text.secondary" align="center">
@@ -46,7 +28,6 @@ const Copyright=()=> {
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-// TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
  const App =()=> {
@@ -67,7 +48,6 @@ const defaultTheme = createTheme();
         </Toolbar>
       </AppBar>
       <main>
-        {/* Hero unit */}
         <Box
           sx={{
             bgcolor: 'background.paper',
