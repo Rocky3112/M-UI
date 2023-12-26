@@ -6,10 +6,22 @@ import {
   Grid,
   Toolbar,
   Typography,
+  
 } from "@mui/material";
 import { PhotoCamera } from "@mui/icons-material";
+// import { makeStyles } from '@mui/styles';
 
-function App() {
+//for better way using css styling
+// const useStyles = makeStyles((theme) =>({
+//   container:{
+//     color: theme.palette.yellow.main,
+//   }
+
+// }))
+
+const App =()=> {
+
+  // const classes = useStyles();
   return (
     <div>
       <CssBaseline>
@@ -28,6 +40,7 @@ function App() {
               align="center"
               color="textPrimary"
               gutterBottom
+              className={classes.container}
             >
               Photo Album
             </Typography>
